@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HABIB AI</string>
+    <string name="tagline">আপনার বুদ্ধিমান বাংলা ও ইংরেজি এআই সঙ্গী</string>
+    <string name="new_chat">নতুন কথোপকথন</string>
+    <string name="chat_history">কথোপকথন তালিকা</string>
+    <string name="profile">প্রোফাইল</string>
+    <string name="settings">সেটিংস</string>
+    <string name="diagnostics">সংযোগ পরীক্ষা</string>
+    <string name="voice_mode">ভয়েস মোড</string>
+</resources>

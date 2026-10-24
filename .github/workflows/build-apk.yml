@@ -1,0 +1,44 @@
+name: Build Habib AI APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Prepare Environment and Keystore
+        run: |
+          # Create placeholder .env if not supplied in secrets
+          if [ ! -f .env ]; then
+            cp .env.example .env
+          fi
+          # Decode debug keystore if present
+          if [ -f debug.keystore.base64 ] && [ ! -f debug.keystore ]; then
+            base64 -d debug.keystore.base64 > debug.keystore
+          fi
+          chmod +x gradlew || true
+
+      - name: Build Debug APK with Gradle
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Upload Debug APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: habib-ai-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 14

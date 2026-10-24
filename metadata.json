@@ -1,0 +1,6 @@
+{
+  "name": "HABIB AI",
+  "description": "Native Bengali & English AI assistant powered by Gemini with voice, image analysis, and user personalization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
